@@ -1,6 +1,6 @@
 # Python Keylogger Proof of Concept
 
-⚠️ **DISCLAIMER: This project is for educational and research purposes only. Use only on systems you own or have explicit permission to test. Unauthorized use is illegal and unethical.**
+⚠️ **DISCLAIMER: This project is for educational and research purposes only. Use only on systems you own or have explicit permission to test.**
 
 ## Overview
 
